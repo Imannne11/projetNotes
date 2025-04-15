@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tag',
@@ -8,7 +8,7 @@ import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 })
 export class TagComponent {
   
-  id = input<number>(0);  // Signal d'entrée pour l'ID
+  id = input<number>(0);  // input pour l'ID
   name = input<string>('');  // Signal d'entrée pour le nom
   color = input<string>('#000000');  // Signal d'entrée pour la couleur
 

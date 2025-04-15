@@ -12,7 +12,9 @@ export class StorageService {
 
   // Récupérer les tags depuis le localStorage
   getTags(): any[] {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (typeof window !== 'undefined' && window.localStorage)
+      //Vérifie que localStorage est bien accessible dans le navigateur.
+    {
       const tags = localStorage.getItem('tags');
       return tags ? JSON.parse(tags) : [];
     }
@@ -24,20 +26,15 @@ export class StorageService {
     localStorage.setItem(this.TAGS_KEY, JSON.stringify(tags));  // Sauvegarde les tags sous forme de chaîne JSON
   }
 
-   addTag(tag: any): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      let tags = this.getTags();
-      tags.push(tag);
-      localStorage.setItem('tags', JSON.stringify(tags));
-    }
+  addTag(tag: Tag): void {
+    const tags = this.getTags();
+    tags.push(tag);
+    this.saveTags(tags);
   }
 
   // Supprimer un tag
   deleteTag(tagId: number): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      let tags = this.getTags();
-      tags = tags.filter(tag => tag.id !== tagId);
-      localStorage.setItem('tags', JSON.stringify(tags));
-    }
+    const tags = this.getTags().filter(tag => tag.id !== tagId);
+    this.saveTags(tags);
   }
 }
