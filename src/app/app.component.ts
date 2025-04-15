@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';   // pour routerLink
+import { CommonModule } from '@angular/common';
+import { TagsComponent } from './tags/tags.component'; // adapte le chemin si besoin
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterLink,CommonModule,TagsComponent], //permet le clic sur les liens
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'projetNotes';
+  title = 'Imane';
 }
