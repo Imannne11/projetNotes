@@ -1,29 +1,37 @@
-import { Tag } from './tag';  // Import du type Tag
+import { Tag } from "./tag";
 
 export class Note {
   id: number;
   titre: string;
-  contenu: string;
+  contenu?: string; // 'contenu' est optionnel
   date: Date;
   couleur: string;
-  tags: Tag[];  // tableau d'objets de type Tag
-  type: 'texte' | 'checklist'; // Le type de la note peut être 'texte' ou 'checklist'
+  tags: Tag[];
+  type: 'texte' | 'checklist';
+  checklist: Array<{ content: string, checked: boolean }>; // Liste des éléments de la checklist
 
   constructor(
     id: number,
     titre: string,
-    contenu: string,
     date: Date,
     couleur: string = '#ffffff',
-    tags: Tag[] = [], 
-    type: 'texte' | 'checklist' = 'texte'
+    tags: Tag[] = [],
+    type: 'texte' | 'checklist' = 'texte',
+    checklist: { content: string; checked: boolean }[] = [] // Initialiser la checklist vide
   ) {
     this.id = id;
     this.titre = titre;
-    this.contenu = contenu;
     this.date = date;
     this.couleur = couleur;
     this.tags = tags;
     this.type = type;
+    this.checklist = checklist; // Initialisation de la checklist
+
+    // Si le type est 'texte', initialiser 'contenu'
+    if (type === 'texte') {
+      this.contenu = ''; // Initialise 'contenu' si le type est 'texte'
+    } else {
+      this.contenu = undefined; // Si ce n'est pas 'texte', 'contenu' n'est pas défini
+    }
   }
 }

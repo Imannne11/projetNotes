@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
-import { TagsComponent } from './tags/tags.component';
+import { TagsComponent } from './compo/tags/tags.component';
+import { NotesComponent } from './compo/notes/notes.component';
 
 export const routes: Routes = [
-  { path: '', component: TagsComponent }, // Route par défaut vers TagsComponent
-  { path: 'tags', component: TagsComponent }, // Route pour accéder à /tags
+  { path: '', component: NotesComponent },
+  { path: 'notes', component: NotesComponent },
+  { path: 'tags', component: TagsComponent },
 ];

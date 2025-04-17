@@ -1,19 +1,17 @@
-<!-- app.component.html -->
 <header>
   <nav class="navbar">
     <h1>App de Notes et Tags</h1>
     <ul class="nav-links">
-      <li><a routerLink="/">Accueil</a></li>
+      <li><a routerLink="/notes">Accueil</a></li>
       <li><a routerLink="/tags">Tags</a></li>
     </ul>
   </nav>
 </header>
 
 <main>
-  <!-- Le composant Tags s'affichera ici -->
-  <app-tags></app-tags>
+  <router-outlet></router-outlet>
 </main>
 
 <footer>
-  <p>&copy; 2025 - Mon Application Angular. Tous droits réservés.</p>
+  <p>2025 - Mon Application Angular. Tous droits réservés.</p>
 </footer>

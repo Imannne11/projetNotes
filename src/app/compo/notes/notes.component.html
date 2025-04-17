@@ -1,0 +1,71 @@
+<div>
+  <h2>Liste des Notes</h2>
+  <ul>
+    <li *ngFor="let note of notes; trackBy: trackByNoteId">
+      <div class="note-card" [ngStyle]="{ 'background-color': note.couleur }">
+        <h3>{{ note.titre }}</h3>
+
+        <div *ngIf="note.type === 'texte'">
+          <p>{{ note.contenu }}</p>
+        </div>
+
+        <div *ngIf="note.type === 'checklist'">
+          <ul>
+            <li *ngFor="let item of note.checklist">
+              <input type="checkbox" [(ngModel)]="item.checked" /> {{ item.content }}
+            </li>
+          </ul>
+        </div>
+
+        <button (click)="editNote(note)">Modifier</button>
+        <button (click)="deleteNote(note.id)">Supprimer</button>
+      </div>
+    </li>
+
+    <li *ngIf="!notes.length">Aucune note disponible.</li>
+  </ul>
+</div>
+
+<div>
+  <button (click)="startAddNote()">Ajouter une nouvelle note</button>
+</div>
+
+<form *ngIf="editing" (ngSubmit)="saveNote()">
+  <h3>{{ editing.id === 0 ? 'Créer une note' : 'Modifier la note' }}</h3>
+
+  <label>Titre : 
+    <input [(ngModel)]="editing.titre" name="titre" />
+  </label><br />
+  
+  <label>Couleur : 
+    <input type="color" [(ngModel)]="editing.couleur" name="couleur" />
+  </label><br />
+
+  <label>Type de note :</label>
+  <select [(ngModel)]="editing.type" name="type">
+    <option value="texte">Texte</option>
+    <option value="checklist">Checklist</option>
+  </select><br />
+
+  <div *ngIf="editing.type === 'texte'">
+    <label>Contenu : 
+      <textarea [(ngModel)]="editing.contenu" name="contenu" placeholder="Écrivez votre texte ici"></textarea>
+    </label><br />
+  </div>
+
+  <div *ngIf="editing.type === 'checklist'">
+    <label>Nouvel élément de la checklist : 
+      <input [(ngModel)]="newChecklistItem" name="newChecklistItem" placeholder="Ajouter un élément" />
+    </label>
+    <button type="button" (click)="addChecklistItem()">Ajouter à la checklist</button>
+
+    <ul>
+      <li *ngFor="let item of editing.checklist">
+        <input type="checkbox" [(ngModel)]="item.checked" /> {{ item.content }}
+      </li>
+    </ul>
+  </div>
+
+  <button type="submit">Enregistrer</button>
+  <button type="button" (click)="cancelEdit()">Annuler</button>
+</form>

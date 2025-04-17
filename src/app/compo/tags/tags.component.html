@@ -1,0 +1,29 @@
+<div>
+  <h2>Liste des Tags</h2>
+  <ul>
+    @for (tag of tags; track tag.id) {
+      <li (dblclick)="startEditTag(tag)">
+        <app-tag [id]="tag.id" [name]="tag.name" [color]="tag.color"></app-tag>
+        <div class="button-container">
+          <button class="modify-btn" (click)="startEditTag(tag)">Modifier</button>
+          <button class="delete" (click)="deleteTag(tag)">Supprimer</button>
+        </div>
+      </li>
+    }
+    @if (tags.length === 0) {
+      <li>Aucun tag !</li>
+    }
+  </ul>
+</div>
+
+<div>
+  <button (click)="dialogAddTag()">Ajouter une nouvelle étiquette</button>
+</div>
+
+<form *ngIf="editing" (ngSubmit)="saveTag()">
+  <h3>{{ editing.id === 0 ? 'Créer un tag' : 'Modifier le tag' }}</h3>
+  <label>Nom : <input [(ngModel)]="editing.name" name="name" /></label><br />
+  <label>Couleur : <input type="color" [(ngModel)]="editing.color" name="color" /></label><br />
+  <button type="submit">Valider</button>
+  <button type="button" (click)="cancelEdit()">Annuler</button>
+</form>

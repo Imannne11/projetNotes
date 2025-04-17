@@ -1,0 +1,171 @@
+/* Style global */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Liste des notes */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+/* Carte de note */
+.note-card {
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.note-card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+/* Boutons */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px; /* Espace entre les boutons */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Liste de la checklist */
+ul.checklist {
+  padding-left: 20px;
+  margin: 0;
+  list-style: none;
+}
+
+ul.checklist li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+ul.checklist input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Formulaire */
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="color"] {
+  padding: 0;
+  width: 40px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Boutons spécifiques */
+button[type="submit"] {
+  background-color: green;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: darkgreen;
+}
+
+button[type="button"]:not(.add-checklist-btn) {
+  background-color: red;
+  color: white;
+}
+
+button[type="button"]:not(.add-checklist-btn):hover {
+  background-color: darkred;
+}
+
+button.add-checklist-btn {
+  background-color: blue;
+  color: white;
+}
+
+button.add-checklist-btn:hover {
+  background-color: darkblue;
+}
+
+/* Si aucune note n'est disponible */
+li:empty {
+  text-align: center;
+  color: #888;
+}
+
+/* Bouton "Ajouter à la checklist" */
+.add-checklist-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-checklist-btn:hover {
+  background-color: #218838;
+}
